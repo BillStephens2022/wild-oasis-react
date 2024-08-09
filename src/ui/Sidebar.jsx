@@ -19,6 +19,6 @@ function Sidebar() {
       <MainNav />
     </StyledSidebar>
   );
-}   
+}
 
 export default Sidebar;
