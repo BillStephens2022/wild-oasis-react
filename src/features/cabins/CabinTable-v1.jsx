@@ -1,3 +1,5 @@
+// Replaced by CabinTable.jsx which utilizes the custom Table compound component - just keeping here for reference.
+
 import styled from "styled-components";
 import Spinner from "../../ui/Spinner";
 import CabinRow from "./CabinRow";
