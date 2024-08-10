@@ -8,7 +8,7 @@ import Textarea from "../../ui/Textarea";
 import { useCreateCabin } from "./useCreateCabin";
 import { useUpdateCabin } from "./useUpdateCabin";
 
-function CreateCabinForm({ cabinToEdit = {} }) {
+function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
   const { id: editId, ...editValues } = cabinToEdit;
   const isEditSession = Boolean(editId); // if there is an editId, then it is an edit session and converts to true
 
@@ -31,6 +31,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
         {
           onSuccess: () => {
             reset();
+            onCloseModal?.();
           },
         }
       );
@@ -40,6 +41,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
         {
           onSuccess: () => {
             reset();
+            onCloseModal?.();
           },
         }
       );
@@ -50,7 +52,10 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   }
 
   return (
-    <Form onSubmit={handleSubmit(handleSubmitCabinForm, onError)}>
+    <Form
+      onSubmit={handleSubmit(handleSubmitCabinForm, onError)}
+      type={onCloseModal ? "modal" : "regular"}
+    >
       <FormRow label="Cabin name" error={errors?.name?.message}>
         <Input
           type="text"
@@ -125,7 +130,11 @@ function CreateCabinForm({ cabinToEdit = {} }) {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button
+          variation="secondary"
+          type="reset"
+          onClick={() => onCloseModal?.()}
+        >
           Cancel
         </Button>
         <Button disabled={isWorking}>
