@@ -12,13 +12,21 @@ export function useBookings() {
       ? null
       : { field: "status", value: filterValue };
 
+  // SORT
+  const sortByRaw = searchParams.get("sortBy") || "startDate-desc";
+  const [field, direction] = sortByRaw.split("-");
+  const sortBy = { field, direction };
+
+
+
+
   const {
     isLoading,
     data: bookings,
     error,
   } = useQuery({
-    queryKey: ["bookings", filter], // by adding filter to this array, the query will refetch data whenever the filter changes
-    queryFn: () => getBookings({ filter }),
+    queryKey: ["bookings", filter, sortBy], // by adding filter to this array, the query will refetch data whenever the filter changes
+    queryFn: () => getBookings({ filter, sortBy }),
   });
   return { isLoading, bookings, error };
 }
