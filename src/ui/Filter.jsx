@@ -12,7 +12,7 @@ const StyledFilter = styled.div`
 `;
 
 const FilterButton = styled.button.attrs(({ active }) => ({
-  'data-active': active,
+  "data-active": active,
 }))`
   background-color: var(--color-grey-0);
   border: none;
@@ -43,6 +43,7 @@ function Filter({ filterField, options }) {
 
   function handleClick(value) {
     searchParams.set(filterField, value);
+    if (searchParams.get("page")) searchParams.set("page", 1);
     setSearchParams(searchParams);
   }
 
