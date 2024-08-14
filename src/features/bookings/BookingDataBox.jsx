@@ -6,11 +6,11 @@ import {
   HiOutlineCurrencyDollar,
   HiOutlineHomeModern,
 } from "react-icons/hi2";
-
 import DataItem from "../../ui/DataItem";
+import Empty from "../../ui/Empty";
 import { Flag } from "../../ui/Flag";
-
 import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
+
 
 const StyledBookingDataBox = styled.section`
   /* Box */
@@ -103,6 +103,7 @@ const Footer = styled.footer`
 
 // A purely presentational component
 function BookingDataBox({ booking }) {
+
   const {
     created_at,
     startDate,
@@ -115,9 +116,14 @@ function BookingDataBox({ booking }) {
     hasBreakfast,
     observations,
     isPaid,
-    guests: { fullName: guestName, email, country, countryFlag, nationalID },
-    cabins: { name: cabinName },
+    guests = {},
+    cabins = {},
   } = booking;
+
+  const { fullName: guestName, email, country, countryFlag, nationalID } = guests;
+  const { name: cabinName } = cabins;
+
+  // if (!startDate || !endDate) return;
 
   return (
     <StyledBookingDataBox>
