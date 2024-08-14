@@ -7,7 +7,6 @@ import {
   HiOutlineHomeModern,
 } from "react-icons/hi2";
 import DataItem from "../../ui/DataItem";
-import Empty from "../../ui/Empty";
 import { Flag } from "../../ui/Flag";
 import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
 
@@ -122,8 +121,6 @@ function BookingDataBox({ booking }) {
 
   const { fullName: guestName, email, country, countryFlag, nationalID } = guests;
   const { name: cabinName } = cabins;
-
-  // if (!startDate || !endDate) return;
 
   return (
     <StyledBookingDataBox>
