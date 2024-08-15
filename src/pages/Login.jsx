@@ -13,10 +13,17 @@ const LoginLayout = styled.main`
   background-color: var(--color-grey-50);
 `;
 
+const P = styled.p`
+  margin: auto;
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+`
+
 function Login() {
   return <LoginLayout>
     <Logo />
     <Heading as="h4">Log in to your account</Heading>
+    <P>*** &apos;Login as Guest&apos; for one click access ***</P>
     <LoginForm />
   </LoginLayout>;
 }

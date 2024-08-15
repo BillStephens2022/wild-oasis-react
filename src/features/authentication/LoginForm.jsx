@@ -7,8 +7,8 @@ import SpinnerMini from "../../ui/SpinnerMini";
 import { useLogin } from "./useLogin";
 
 function LoginForm() {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { login, isLoading } = useLogin();
 
   function handleSubmit(e) {
@@ -22,6 +22,12 @@ function LoginForm() {
         setPassword("");
       },
     });
+  }
+
+  function handleGuestLogin() {
+    setEmail("guest@gmail.com");
+    setPassword("password");
+    handleSubmit({ preventDefault: () => {} });
   }
 
   return (
@@ -49,6 +55,7 @@ function LoginForm() {
       </FormRowVertical>
       <FormRowVertical>
         <Button size="large" disabled={isLoading}>{!isLoading ? "Login" : <SpinnerMini />}</Button>
+        <Button size="large" disabled={isLoading} onClick={handleGuestLogin}>{!isLoading ? "Login as Guest" : <SpinnerMini />}</Button>
       </FormRowVertical>
     </Form>
   );
