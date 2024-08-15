@@ -4,7 +4,7 @@
 
   A fullstack resort management application.  Checkin and checkout guests, add/edit/delete cabins for rental.  Manage price settings for cabins/breakfast. Includes user authentication for employees which can be added/removed with email, password, avatar.  Built with React, React Query, Supabase, React Hook Form, React Hot Toast, Recharts.
 
-  Deployed URL: Coming Soon
+  Deployed URL: https://wild-oasis-react-eight.vercel.app/
 
   ## Screenshots of app
 
@@ -39,7 +39,7 @@
   
   npm run dev or npm start.  
   
-  Deployed URL: Coming Soon
+  Deployed URL: https://wild-oasis-react-eight.vercel.app/ (Click the 'Login as Guest' button for one click access to test drive)
 
   ## License
 This application is covered under the MIT License.
