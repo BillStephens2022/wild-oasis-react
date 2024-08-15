@@ -27,10 +27,13 @@ export async function login({ email, password }) {
 
 export async function getCurrentUser() {
   const { data: session } = await supabase.auth.getSession();
+  
   if (!session.session) return null;
+  
   const { data, error } = await supabase.auth.getUser();
-  console.log(data);
+  
   if (error) throw new Error(error.message);
+  
   return data?.user;
 }
 
@@ -42,12 +45,15 @@ export async function logout() {
 export async function updateCurrentUser({ fullName, password, avatar }) {
   // 1. Update password OR fullName
   let updateData;
+  
   if (password) updateData = { password };
+  
   if (fullName) updateData = { data: { fullName } };
 
   const { data, error } = await supabase.auth.updateUser(updateData);
 
   if (error) throw new Error(error.message);
+  
   if (!avatar) return data;
 
   // 2. Upload avatar
